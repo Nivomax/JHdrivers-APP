@@ -9,11 +9,6 @@ def create_users_view(parent, on_add=None, on_edit=None, on_delete=None, on_refr
     header = tk.Frame(frame)
     header.pack(fill="x", pady=10)
 
-    tk.Label(
-        header,
-        text="Liste des clients",
-        font=("Arial", 18),
-    ).pack(side="left")
 
     actions = tk.Frame(header)
     actions.pack(side="right", padx=10)

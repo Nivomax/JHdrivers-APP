@@ -55,7 +55,6 @@ Pour tester l'application, utilisez le compte administrateur suivant :
 ├── database/
 │   ├── __init__.py
 │   ├── database.py
-│   └── schema.sql
 ├── models/
 │   ├── administrator.py
 │   ├── chauffeur.py
@@ -86,98 +85,29 @@ Pour tester l'application, utilisez le compte administrateur suivant :
 ### Prérequis
 
 - Python 3.10 ou supérieur
-- MySQL ou MariaDB
 - Tkinter
-- Git
-- Accès MySQL avec droits de lecture/écriture (et idéalement création de tables)
+- Accès Internet pour joindre la base MySQL distante
 
----
+### Lancer l'application après avoir cloné ou téléchargé le dossier
 
-### Installation automatique sur Debian
-
-Depuis la racine du dépôt :
-
-```bash
-chmod +x install_app.sh
-./install_app.sh
-```
-
-Le script installe les dépendances système, crée l'environnement virtuel `.venv` et installe les packages Python.
-
-Configurez ensuite la connexion à la base :
-
-```bash
-export DB_HOST="mysql-jhdrivers.alwaysdata.net"
-export DB_PORT="3306"
-export DB_NAME="jhdrivers_e6"
-export DB_USER="jhdrivers_max"
-export DB_PASS="Maxime94400"
-```
-
-Au démarrage, l'application vérifie et initialise automatiquement le schéma SQL depuis `database/schema.sql` (création des tables si elles n'existent pas).
-
-Lancez ensuite l'application :
-
-```bash
-source .venv/bin/activate
-python main.py
-```
-
----
-
-### Installation manuelle sous Windows
-
-#### 1. Créer un environnement virtuel
-
-Depuis la racine du dépôt :
+Depuis la racine du projet, ouvrez un terminal puis exécutez :
 
 ```powershell
 python -m venv .venv
 .venv\Scripts\activate
-```
-
-#### 2. Installer les dépendances
-
-```powershell
 pip install -r requirements.txt
-```
-
-#### 3. Démarrer MySQL
-
-Assurez-vous que MySQL est accessible, puis configurez les variables d'environnement si nécessaire :
-
-```powershell
-$env:DB_HOST="mysql-jhdrivers.alwaysdata.net"
-$env:DB_PORT="3306"
-$env:DB_NAME="jhdrivers_e6"
-$env:DB_USER="jhdrivers_max"
-$env:DB_PASS="Maxime94400"
-```
-
-#### 4. Lancer l'application
-
-```powershell
 python main.py
 ```
 
----
-
-### Problèmes fréquents
-
-**`python` n'est pas reconnu** : essayez `python3` ou réinstallez Python en activant l'option d'ajout au `PATH`.
-
-**L'environnement virtuel ne s'active pas sous PowerShell** :
-
-```powershell
-Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
-```
-
-**Erreur de connexion MySQL** : vérifiez l'hôte, le port, la base, l'utilisateur et le mot de passe (`DB_HOST`, `DB_PORT`, `DB_NAME`, `DB_USER`, `DB_PASS`).
-
-**Erreur "Table ... doesn't exist"** : l'application tente de créer automatiquement les tables à partir de `database/schema.sql` au premier accès. Si l'erreur persiste, vérifiez que l'utilisateur MySQL a bien les droits `CREATE`/`ALTER` sur la base.
-
-**Erreur Tkinter sous Debian** :
+Si vous êtes sur Linux ou macOS :
 
 ```bash
-sudo apt install python3-tk
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+python main.py
 ```
+
+L'application se connecte directement à la base de données en ligne déjà configurée dans `database/database.py`.
+Il n'y a pas de schéma à créer ni de base locale à installer.
+
