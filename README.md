@@ -89,7 +89,7 @@ Pour tester l'application, utilisez le compte administrateur suivant :
 - MySQL ou MariaDB
 - Tkinter
 - Git
-- Base `jhdrivers-e6` initialisée avec `database/schema.sql`
+- Accès MySQL avec droits de lecture/écriture (et idéalement création de tables)
 
 ---
 
@@ -107,13 +107,14 @@ Le script installe les dépendances système, crée l'environnement virtuel `.ve
 Configurez ensuite la connexion à la base :
 
 ```bash
-export JHDRIVERS_DB_HOST="localhost"
-export JHDRIVERS_DB_USER="jhdrivers"
-export JHDRIVERS_DB_PASSWORD="jhdrivers_password"
-export JHDRIVERS_DB_NAME="jhdrivers-e6"
+export DB_HOST="mysql-jhdrivers.alwaysdata.net"
+export DB_PORT="3306"
+export DB_NAME="jhdrivers_e6"
+export DB_USER="jhdrivers_max"
+export DB_PASS="Maxime94400"
 ```
 
-Le script crée également la base de données et importe `database/schema.sql`.
+Au démarrage, l'application vérifie et initialise automatiquement le schéma SQL depuis `database/schema.sql` (création des tables si elles n'existent pas).
 
 Lancez ensuite l'application :
 
@@ -143,7 +144,15 @@ pip install -r requirements.txt
 
 #### 3. Démarrer MySQL
 
-Démarrez MySQL depuis le panneau de contrôle XAMPP et vérifiez que la base `jhdrivers-e6` existe.
+Assurez-vous que MySQL est accessible, puis configurez les variables d'environnement si nécessaire :
+
+```powershell
+$env:DB_HOST="mysql-jhdrivers.alwaysdata.net"
+$env:DB_PORT="3306"
+$env:DB_NAME="jhdrivers_e6"
+$env:DB_USER="jhdrivers_max"
+$env:DB_PASS="Maxime94400"
+```
 
 #### 4. Lancer l'application
 
@@ -163,7 +172,9 @@ python main.py
 Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
 ```
 
-**Erreur de connexion MySQL** : vérifiez que MySQL est démarré et que les variables `JHDRIVERS_DB_*` correspondent à votre configuration.
+**Erreur de connexion MySQL** : vérifiez l'hôte, le port, la base, l'utilisateur et le mot de passe (`DB_HOST`, `DB_PORT`, `DB_NAME`, `DB_USER`, `DB_PASS`).
+
+**Erreur "Table ... doesn't exist"** : l'application tente de créer automatiquement les tables à partir de `database/schema.sql` au premier accès. Si l'erreur persiste, vérifiez que l'utilisateur MySQL a bien les droits `CREATE`/`ALTER` sur la base.
 
 **Erreur Tkinter sous Debian** :
 
