@@ -10,12 +10,10 @@ Cette application constitue le client lourd d'administration de JH Drivers.
 
 - Authentification administrateur par identifiant et mot de passe
 - Tableau de bord avec statistiques sur les réservations
-- Gestion des réservations et modification de leur statut
-- Affectation d'un chauffeur depuis une fenêtre dédiée
+- Gestion des réservations : modification de statut et affectation d'un chauffeur
 - Planning mensuel des courses
-- Gestion complète des chauffeurs : ajout, modification et suppression
-- Gestion complète des clients : ajout, modification et suppression
-- Code couleur selon le statut des réservations
+- Gestion des chauffeurs : ajout, modification et suppression
+- Gestion des clients : ajout, modification et suppression
 
 ---
 
@@ -28,14 +26,13 @@ Cette application constitue le client lourd d'administration de JH Drivers.
 | Base de données | MySQL / MariaDB |
 | Accès BDD | mysql-connector-python avec requêtes préparées |
 | Architecture | Couches séparées (modèles / services / GUI) |
-| Déploiement cible | VM Debian |
 | Versionning | Git / GitHub |
 
 ---
 
 ## Démo
 
-Pour tester l'application, utilisez le compte administrateur suivant :
+Pour tester l'application, utilisez le compte suivant :
 
 | Champ | Valeur |
 |-------|--------|

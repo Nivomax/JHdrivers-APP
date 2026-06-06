@@ -10,11 +10,7 @@ def create_reservations_view(parent):
     header_reservations = tk.Frame(reservations_area)
     header_reservations.pack(fill="x", pady=10)
 
-    tk.Label(
-        header_reservations,
-        text="Liste des réservations",
-        font=("Arial", 18)
-    ).pack(side="left")
+
 
     frame_reservations_actions = tk.Frame(header_reservations)
     frame_reservations_actions.pack(side="right")
